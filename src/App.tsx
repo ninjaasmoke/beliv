@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import { PrivateRoute } from './components/PrivateRoute';
-import Login from './pages/Login';
+import { Home } from './pages/Home';
+import { Login } from './pages/Login';
 
 function App() {
   useEffect(() => {
@@ -13,9 +14,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/login" component={Login} />
-          <PrivateRoute path="/" exact>
-            <h1>Logged</h1>
-          </PrivateRoute>
+          <PrivateRoute path="/" exact component={Home} />
         </Switch>
       </BrowserRouter>
     </div>

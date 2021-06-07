@@ -1,21 +1,21 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, RouteComponentProps } from 'react-router-dom';
 import { getCookie } from '../helper/cookies';
 
 interface Props {
     path: string,
-    exact: boolean
+    exact: boolean,
+    component: React.ComponentType<any> | React.ComponentType<RouteComponentProps<any>> | undefined;
 }
 
-export const PrivateRoute: React.FC<Props> = ({ path, exact, children }) => {
+export const PrivateRoute: React.FC<Props> = ({ component, path, exact }) => {
     return (
         <Route
             path={path}
             exact={exact}
-        >
-            {
-                getCookie('name').length !== 0 ? <>{children}</> : <Redirect to="/login" />
+            children={
+                getCookie('name').length !== 0 ? component : <Redirect to="/login" />
             }
-        </Route>
+        />
     );
 }
