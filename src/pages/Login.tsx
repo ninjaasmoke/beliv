@@ -9,7 +9,7 @@ import gIcon from '../assets/images/g_icon.png';
 import { useAuthContext } from '../context/AuthContext';
 import { UserData } from '../context/types';
 
-export const Login: React.FC = () => {
+const Login: React.FC = () => {
     const [showSpinner, setShowSpinner] = useState(false);
 
     const { addUser } = useAuthContext();
@@ -64,3 +64,5 @@ export const Login: React.FC = () => {
         </div >
     )
 }
+
+export default Login;

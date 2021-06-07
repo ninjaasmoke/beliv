@@ -1,0 +1,201 @@
+.nav {
+    min-width: 100%;
+    min-height: 60px;
+    padding: 32px 32px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.nav h1 {
+    font-weight: 900;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.userD {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 8px;
+}
+
+.userD:hover {
+    background-color: var(--sec);
+}
+
+.userD img {
+    border-radius: 40px;
+    margin-right: 12px;
+}
+
+.userD span {
+    font-weight: 900;
+    text-transform: lowercase;
+}
+
+.popUpWrapper {
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+}
+
+.logoutWrapper {
+    background-color: #00000066;
+}
+
+.popUp {
+    position: fixed;
+    min-width: 180px;
+    right: 40px; 
+    border: 1px solid var(--ter);
+    background-color: var(--sec);
+    border-radius: 8px;
+    animation: popUpAnim 200ms forwards ease-out;
+    transition: top 200ms;
+    overflow: hidden;
+}
+
+@keyframes popUpAnim {
+    from {opacity: 0; top: 80px;}
+    to {opacity: 1; top: 100px;}
+}
+
+.popUp ul {
+    list-style: none;
+}
+
+.popUp ul li {
+    width: 100%;
+    padding: 16px 18px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--color);
+}
+
+.popUp ul li:hover {
+    background-color: var(--ter);
+}
+
+.logout {
+    background-color: var(--ter);
+    font-weight: 700;
+}
+
+.popUp img {
+    width: 16px;
+    height: 16px;
+    margin-right: 12px;
+}
+
+.logoutMenu {
+    width: 600px;
+    min-height: 100px;
+    background-color: var(--sec);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.logoutMenu span {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    cursor: pointer;
+}
+
+.logoutButtons {
+    padding-top: 32px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    font-family: 'Lexend', sans-serif;
+}
+
+.logoutButton {
+    background-color: var(--accent);
+    font-family: inherit;
+    border-radius: 4px;
+    outline: none;
+    padding: 8px 24px;
+    text-align: center;
+    min-width: 100px;
+    border: none;
+    color: var(--col);
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.cancelButton {
+    border: none;
+    color: var(--col);
+    background-color: transparent;
+    font-family: inherit;
+    text-align: center;
+    outline: none;
+    padding: 8px 24px;
+    min-width: 100px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .nav {
+        padding: 24px 12px;
+    }
+    .popUp {
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        top: auto;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 12px;
+        border-top-right-radius: 12px;
+        padding: 24px 12px;
+        border: none;
+    }
+    .userD {
+        padding: 0;
+    }
+    .userD img {
+        margin: 0;
+    }
+    .userD span {
+        display: none;
+    }
+    .popUp ul li {
+        padding: 18px 18px;
+        font-size: 17px;
+    }
+    .logout {
+        background-color: inherit;
+    }
+    .logoutMenu {
+        width: 100%;
+    }
+
+    @keyframes popUpAnim {
+        from {opacity: 0; bottom: -100px;}
+        to {opacity: 1; bottom: 0}
+    }
+
+}

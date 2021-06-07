@@ -1,9 +1,15 @@
 import React from 'react'
+import Nav from '../components/Nav'
 
 interface Props { }
 
-export const Home: React.FC<Props> = () => {
+const Home: React.FC<Props> = () => {
     return (
-        <h1>Logged</h1>
+        <div>
+            <Nav />
+            <main className="container" ></main>
+        </div>
     )
 }
+
+export default Home;
