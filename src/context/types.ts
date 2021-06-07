@@ -1,5 +1,5 @@
 export type AuthProps = {
-    userData: UserData | {},
+    userData: UserData,
     addUser: (userData: UserData) => void,
     logoutUser: () => void
 
