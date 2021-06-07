@@ -5,7 +5,7 @@ import { getCookie } from '../helper/cookies';
 interface Props {
     path: string,
     exact: boolean,
-    component: React.ComponentType<any> | React.ComponentType<RouteComponentProps<any>> | undefined;
+    component: React.ComponentType<any> | React.ComponentType<RouteComponentProps<any>> | undefined | React.ReactNode;
 }
 
 export const PrivateRoute: React.FC<Props> = ({ component, path, exact }) => {
@@ -13,9 +13,10 @@ export const PrivateRoute: React.FC<Props> = ({ component, path, exact }) => {
         <Route
             path={path}
             exact={exact}
-            children={
+        >
+            {
                 getCookie('name').length !== 0 ? component : <Redirect to="/login" />
             }
-        />
+        </Route>
     );
 }

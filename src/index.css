@@ -9,6 +9,18 @@
   --terHov: #343C47;
 }
 
+body::-webkit-scrollbar {
+  width: 5px;
+}
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--terHov);
+  border-radius: 20px;
+  border: none;
+}
+
 html,
 body {
   background-color: var(--bg);

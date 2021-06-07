@@ -34,6 +34,10 @@
     color: var(--accent);
 }
 
+.desc a:hover {
+    text-decoration: underline;
+}
+
 .buttons {
     margin-top: 40px;
 }

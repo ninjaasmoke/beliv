@@ -7,7 +7,7 @@ const Home: React.FC<Props> = () => {
     return (
         <div>
             <Nav />
-            <main className="container" ></main>
+            <main className="container"></main>
         </div>
     )
 }

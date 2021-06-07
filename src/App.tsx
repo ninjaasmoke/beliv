@@ -5,6 +5,7 @@ import { PrivateRoute } from './components/PrivateRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Privacy from './pages/Privacy';
+import Profile from './pages/Profile';
 import Terms from './pages/Terms';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/privacy" component={Privacy} />
           <Route path="/terms" component={Terms} />
+          <PrivateRoute path="/profile" exact component={Profile} />
           <PrivateRoute path="/" exact component={Home} />
         </Switch>
       </BrowserRouter>

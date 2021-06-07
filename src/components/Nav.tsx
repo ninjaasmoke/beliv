@@ -19,19 +19,19 @@ const Nav: React.FC<Props> = () => {
         <nav className="nav">
             <Link to="/"><h1>beliv</h1></Link>
             <div className="userD" onClick={() => setShowMenu(true)}>
-                <img src={userData.imageUrl} alt="User Image" width={36} height={36} />
+                <img src={userData.imageUrl} alt="User Profile" width={36} height={36} />
                 <span>{userData.givenName}</span>
             </div>
             <div className="popUpWrapper" style={{ display: showMenu ? 'block' : 'none' }} onClick={() => setShowMenu(false)}>
                 <div className="popUp">
                     <ul>
-                        <Link to="/profile"><li><img src={profile} /> Profile</li></Link>
-                        <Link to="/settings"><li><img src={settings} /> Settings</li></Link>
-                        <li className="logout" onClick={() => setShowLogout(true)}><img src={logout} /> Logout</li>
+                        <Link to="/profile"><li><img src={profile} alt="Profile Link" /> Profile</li></Link>
+                        <Link to="/settings"><li><img src={settings} alt="Settings Link" /> Settings</li></Link>
+                        <li className="logout" onClick={() => setShowLogout(true)}><img src={logout} alt="Logout Button" /> Logout</li>
                     </ul>
                 </div>
             </div>
-            <div className={"popUpWrapper" + " " + "logoutWrapper"} style={{ display: showLogout ? 'block' : 'none' }}>
+            <div className='popUpWrapper logoutWrapper' style={{ display: showLogout ? 'block' : 'none' }}>
                 <div className="logoutMenu">
                     Are you sure you want to log out?
                         <span className="cancel" onClick={() => setShowLogout(false)}>✕</span>
