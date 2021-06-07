@@ -1,0 +1,20 @@
+.tpContainer {
+    width: 100%;
+    height: 100%;
+    padding: 40px 10% 20px;
+}
+
+.tpContainer h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+    .tpContainer {
+        padding: 40px 12px;
+    }
+
+    .tpContainer ul {
+        padding-left: 20px;
+    }
+}
