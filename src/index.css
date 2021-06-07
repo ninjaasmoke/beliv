@@ -1,13 +1,43 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --accent: #FD4D4D;
+  /* --bg: #0A0E10; */
+  --bg: #0A0E12;
+  --color: #DEE3E9;
+  --sec: #151A20;
+  --secCol: #5F718C;
+  --ter: #242C37;
+  --terHov: #343C47;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,
+body {
+  background-color: var(--bg);
+  color: var(--color);
+  padding: 0;
+  margin: 0;
+  font-family: 'Lexend', sans-serif;
 }
+
+h1, h2, h3, h4, h5 {
+  color: var(--accent);
+  font-family: 'Spartan', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lexend', sans-serif;
+  user-select: none;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@700;900&family=Lexend:wght@400;700&display=swap');
