@@ -21,7 +21,6 @@ export default function PeerProvider({ children }: { children: any }) {
     const [messages, setMessages] = useState<any[]>([]);
 
     const data = (data: any) => {
-        console.log(data);
         if (data.type === "message") {
             setMessages && setMessages((m: any) => [...m, data[data.type]]);
         }
@@ -46,7 +45,6 @@ export default function PeerProvider({ children }: { children: any }) {
         const peer = new Peer(nanoid(6));
 
         const open = (id: string) => {
-            console.log(id);
             setPeer(peer);
         };
         const err = (err: any) => {
@@ -55,7 +53,7 @@ export default function PeerProvider({ children }: { children: any }) {
             }
         };
         const connection = (conn: Peer.DataConnection) => {
-            console.log(conn.peer, " Has connected!");
+            // console.log(conn.peer, " Has connected!");
             setPeerConnection(conn);
         };
         peer.on("open", open);

@@ -21,22 +21,17 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
     const input = useRef<HTMLTextAreaElement>(null);
 
     const sendChat = () => {
-        const msg = input.current?.value
-        // .replace(/([\uE000-\uF8FF]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])/g, ''); // To replace emoji
+        const msg = input.current?.value;
         const m = { text: msg }
         if (msg) {
             peerConnection?.send({ message: m, type: 'message' });
             setMessages && setMessages((msgs: any) => [...msgs, { ...m, sent: true }]);
             input.current?.value && (input.current.value = "");
+            const lastTop = document.getElementById('lastMsg')?.offsetTop;
+            if (lastTop)
+                document.getElementById('messages')?.scrollTo(0, lastTop);
         }
     }
-
-    useEffect(() => {
-        const lastTop = document.getElementById('lastMsg')?.offsetTop;
-        if (lastTop)
-            document.getElementById('messages')?.scrollTo(0, lastTop);
-        document.getElementById('sendChat')?.focus();
-    }, [messages])
 
     useEffect(() => {
         if (getCookie('email') === '') window.location.replace('/login')
