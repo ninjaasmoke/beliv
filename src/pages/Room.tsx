@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
 import { getCookie } from '../helper/cookies';
@@ -7,6 +7,7 @@ import '../styles/Room.css';
 import copy from '../assets/images/copy.svg';
 import share from '../assets/images/share.svg';
 import send from '../assets/images/send_btn.png';
+import { usePeerContext } from '../context/PeerContext';
 
 interface RoomParams {
     roomID: string
@@ -15,9 +16,38 @@ interface RoomParams {
 const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
     const { roomID } = match.params;
     const { userData } = useAuthContext();
+    const { messages, setMessages, peerConnection } = usePeerContext();
+
+    const input = useRef<HTMLTextAreaElement>(null);
+
+    const sendChat = () => {
+        const msg = input.current?.value;
+        const m = { text: msg }
+        if (msg) {
+            console.log(msg);
+            peerConnection?.send({ message: m, type: 'msg' });
+            setMessages && setMessages((msgs: any) => [...msgs, { ...m, sent: true }]);
+            input.current?.value && (input.current.value = "");
+
+            const lastTop = document.getElementById('lastMsg')?.offsetTop;
+            if (lastTop)
+                document.getElementById('messages')?.scrollTo(0, lastTop);
+
+        }
+    }
+
     useEffect(() => {
         if (getCookie('email') === '') window.location.replace('/login')
     }, [userData])
+
+    useEffect(() => {
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === "Enter" && input.current?.value) {
+                sendChat();
+            }
+        })
+    }, [])
+
     return (
         <div className="room">
             <div className="roomMain">
@@ -44,9 +74,19 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
                     <div className="headerName">{userData.name}</div>
                 </div>
                 <div className="chatting">
+                    <div className="messages" id="messages">
+                        {
+                            messages.reverse().map((msg, msgIdx) => (
+                                <div className={msg.sent ? "message sent" : "message"} key={msgIdx}>
+                                    {msg.text}
+                                </div>
+                            ))
+                        }
+                        <div className="lastMsg" id="lastMsg" />
+                    </div>
                     <div className="chatTextArea">
-                        <textarea name="sendChat" id="sendChat" rows={1} placeholder="Type a message..."></textarea>
-                        <button className="sndBtn"><img src={send} alt="Send Button" /></button>
+                        <textarea ref={input} name="sendChat" id="sendChat" rows={1} placeholder="Type a message..."></textarea>
+                        <button className="sndBtn" onClick={sendChat}><img src={send} alt="Send Button" /></button>
                     </div>
                 </div>
             </div>

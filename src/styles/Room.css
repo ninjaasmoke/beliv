@@ -88,6 +88,7 @@
     background-color: var(--sec);
     position: relative;
     padding: 12px;
+    padding-bottom: 60px;
 }
 
 .chatTextArea {
@@ -123,9 +124,69 @@
     border: none;
 }
 
+.messages {
+    padding-right: 8px;
+}
+
+.messages::-webkit-scrollbar {
+    width: 3px;
+}
+.messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+.messages::-webkit-scrollbar-thumb {
+    background-color: var(--ter);
+    border-radius: 20px;
+    border: none;
+}
+
 .sndBtn {
     background-color: transparent;
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+.message {
+    width: fit-content;
+    max-width: calc(100% - 12px);
+    font-size: 14px;
+    background-color: var(--terHov);
+    padding: 2px 16px;
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    margin-bottom: 8px;
+    word-wrap: break-word;
+    user-select: text;
+}
+
+.sent {
+    margin-left: auto;
+    border-radius: 20px;
+    border-bottom-right-radius: 0;
+}
+
+@media (max-width: 768px) {
+    .room {
+        flex-direction: column;
+    }
+    .roomMain {
+        width: 100%;
+        border: none;
+        min-height: 40vh;
+    }
+    .roomSideBar {
+        width: 100%;
+        /* flex-direction: column-reverse; */
+    }
+    .chatting {
+        min-height: 24vh;
+    }
+    .header {
+        display: none;
+    }
+    .messages {
+        max-height: 40vh;
+        overflow-y: scroll;
+    }
 }
