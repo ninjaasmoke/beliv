@@ -28,8 +28,10 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
             setMessages && setMessages((msgs: any) => [...msgs, { ...m, sent: true }]);
             input.current?.value && (input.current.value = "");
             const lastTop = document.getElementById('lastMsg')?.offsetTop;
-            if (lastTop)
+            if (lastTop) {
                 document.getElementById('messages')?.scrollTo(0, lastTop);
+                document.getElementById('sendChat')?.focus()
+            }
         }
     }
 
