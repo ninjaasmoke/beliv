@@ -18,26 +18,28 @@ export default function PeerProvider({ children }: { children: any }) {
 
     const [peerConnection, setPeerConnection] = useState<Peer.DataConnection | null>(null);
 
-    const [messages, setMessages] = useState<any[]>([]);
+    const [messages, setMessages] = useState<String[]>([]);
 
-    const data = (data: any) => {
-        if (data.type === "message") {
-            setMessages && setMessages((m: any) => [...m, data[data.type]]);
-        }
-    }
-    const error = (err: any) => {
-        console.error(err);
-    }
-    const close = () => {
-        console.log("Closed peerConnection");
-    }
-    const open = () => { console.log("Opened peerConnection") }
     useEffect(() => {
+        const data = (data: any) => {
+            console.log(data);
+            if (data.type === "message") {
+                setMessages && setMessages((m: any) => [...m, data[data.type]]);
+            }
+            // else if (data.type === "event") {
+            //     if (data.event === "messages")
+            // }
+        }
+        const error = (err: any) => {
+            console.error(err);
+        }
+        const close = () => {
+            console.log("Closed peer");
+        }
         if (peerConnection) {
             peerConnection.on('data', data);
             peerConnection.on('error', error);
             peerConnection.on('close', close);
-            peerConnection.on('open', open);
         }
     }, [peerConnection]);
 
@@ -53,7 +55,7 @@ export default function PeerProvider({ children }: { children: any }) {
             }
         };
         const connection = (conn: Peer.DataConnection) => {
-            // console.log(conn.peer, " Has connected!");
+            console.log("Getting connection from: ", conn.peer);
             setPeerConnection(conn);
         };
         peer.on("open", open);
