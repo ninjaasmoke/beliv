@@ -24,8 +24,7 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
         const msg = input.current?.value;
         const m = { text: msg }
         if (msg) {
-            console.log(msg);
-            peerConnection?.send({ message: m, type: 'msg' });
+            peerConnection?.send({ message: m, type: 'message' });
             setMessages && setMessages((msgs: any) => [...msgs, { ...m, sent: true }]);
             input.current?.value && (input.current.value = "");
             const lastTop = document.getElementById('lastMsg')?.offsetTop;
@@ -50,9 +49,9 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
         <div className="room">
             <div className="roomMain">
                 {/* <video src=""></video> */}
-                <iframe width="100%"
+                {/* <iframe width="100%"
                     src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                </iframe>
+                </iframe> */}
             </div>
             <div className="roomSideBar">
                 <div className="copy">
@@ -77,7 +76,7 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
                 <div className="chatting">
                     <div className="messages" id="messages">
                         {
-                            messages.reverse().map((msg, msgIdx) => (
+                            messages.map((msg, msgIdx) => (
                                 <div className={msg.sent ? "message sent" : "message"} key={msgIdx}>
                                     {msg.text}
                                 </div>
