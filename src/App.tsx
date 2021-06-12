@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
-import { PrivateRoute } from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Privacy from './pages/Privacy';
@@ -23,7 +23,7 @@ function App() {
           <Route path="/terms" component={Terms} />
           <PrivateRoute path="/profile" exact component={Profile} />
           <PrivateRoute path="/settings" exact component={Settings} />
-          <PrivateRoute path="/room/:roomID" exact component={Room} />
+          <Route path="/room/:roomID" exact component={Room} /> {/* Fix this */}
           <PrivateRoute path="/" exact component={Home} />
         </Switch>
       </BrowserRouter>

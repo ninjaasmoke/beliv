@@ -1,10 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useAuthContext } from '../context/AuthContext'
 import { usePeerContext } from '../context/PeerContext';
 
 const NewRoom: React.FC = () => {
-    const { userData } = useAuthContext();
     const { peer } = usePeerContext();
 
     const style: React.CSSProperties = {

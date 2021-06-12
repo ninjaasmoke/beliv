@@ -5,10 +5,10 @@ import { getCookie } from '../helper/cookies';
 interface Props {
     path: string,
     exact: boolean,
-    component: React.ComponentType<any> | React.ComponentType<RouteComponentProps<any>> | undefined | React.ReactNode;
+    component: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>;
 }
 
-export const PrivateRoute: React.FC<Props> = ({ component, path, exact }) => {
+const PrivateRoute: React.FC<Props> = ({ component, path, exact }) => {
     return (
         <Route
             path={path}
@@ -20,3 +20,5 @@ export const PrivateRoute: React.FC<Props> = ({ component, path, exact }) => {
         </Route>
     );
 }
+
+export default PrivateRoute
