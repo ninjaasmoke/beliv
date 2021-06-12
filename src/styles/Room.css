@@ -3,6 +3,7 @@
     display: flex;
     flex-direction:  row;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .roomMain {
@@ -89,6 +90,7 @@
     position: relative;
     padding: 12px;
     padding-bottom: 60px;
+    max-height: 63vh;
 }
 
 .chatTextArea {
@@ -126,6 +128,8 @@
 
 .messages {
     padding-right: 8px;
+    max-height: 100%;
+    overflow-y: scroll;
 }
 
 .messages::-webkit-scrollbar {
@@ -152,7 +156,7 @@
     max-width: calc(100% - 12px);
     font-size: 14px;
     background-color: var(--terHov);
-    padding: 2px 16px;
+    padding: 2px 16px 4px;
     border-radius: 20px;
     border-bottom-left-radius: 0;
     margin-bottom: 8px;
@@ -164,6 +168,7 @@
     margin-left: auto;
     border-radius: 20px;
     border-bottom-right-radius: 0;
+    background-color: var(--accent);
 }
 
 @media (max-width: 768px) {
@@ -187,6 +192,5 @@
     }
     .messages {
         max-height: 40vh;
-        overflow-y: scroll;
     }
 }
