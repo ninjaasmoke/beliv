@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import '../styles/Room.css'
-
-import copy from '../assets/images/copy.svg'
-import share from '../assets/images/share.svg'
 import { useAuthContext } from '../context/AuthContext';
 import { getCookie } from '../helper/cookies';
+import '../styles/Room.css';
+
+import copy from '../assets/images/copy.svg';
+import share from '../assets/images/share.svg';
+import send from '../assets/images/send_btn.png';
 
 interface RoomParams {
     roomID: string
@@ -43,7 +44,10 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
                     <div className="headerName">{userData.name}</div>
                 </div>
                 <div className="chatting">
-
+                    <div className="chatTextArea">
+                        <textarea name="sendChat" id="sendChat" rows={1} placeholder="Type a message..."></textarea>
+                        <button className="sndBtn"><img src={send} alt="Send Button" /></button>
+                    </div>
                 </div>
             </div>
         </div>
