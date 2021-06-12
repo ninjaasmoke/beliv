@@ -45,7 +45,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: transparent;
+    background-color: #00000022;
 }
 
 .logoutWrapper {
@@ -160,6 +160,9 @@
 @media (max-width: 600px) {
     .nav {
         padding: 24px 12px;
+    }
+    .popUpWrapper {
+        background-color: #00000066;
     }
     .popUp {
         width: 100%;

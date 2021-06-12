@@ -7,11 +7,16 @@
 
 .roomMain {
     width: calc(100vw - 300px);
+    border-right: 1px solid var(--sec);
 }
 
 .roomSideBar {
     width: 300px;
     padding: 20px 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .copy {
@@ -26,6 +31,7 @@
 
 .copy div span{
     user-select: text;
+    font-size: 14px;
 }
 
 .copy button {
@@ -38,9 +44,8 @@
 }
 
 .optIcon {
-    width: 18px;
-    height: 18px;
-    padding-top: 4px;
+    width: 14px;
+    height: 14px;
 }
 
 .copy > span {
