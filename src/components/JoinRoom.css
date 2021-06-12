@@ -1,0 +1,25 @@
+.btnDis {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    height: 40px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.btn {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    cursor: pointer;
+    font-family: 'Spartan', sans-serif;
+    color: var(--color);
+    background-color: var(--accent);
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    padding: 6px 12px;
+    padding-top: 10px;
+    transition: top 500ms;
+}
