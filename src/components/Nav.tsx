@@ -19,7 +19,7 @@ const Nav: React.FC<Props> = () => {
         <nav className="nav">
             <Link to="/"><h1>beliv</h1></Link>
             <div className="userD" onClick={() => setShowMenu(true)}>
-                <img src={userData.imageUrl} alt="User Profile" width={36} height={36} />
+                <img src={userData?.imageUrl} alt="User Profile" width={36} height={36} />
                 <span>{userData.givenName}</span>
             </div>
             <div className="popUpWrapper" style={{ display: showMenu ? 'block' : 'none' }} onClick={() => setShowMenu(false)}>

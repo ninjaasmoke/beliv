@@ -5,11 +5,14 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import AuthProvider from './context/AuthContext';
+import PeerProvider from './context/PeerContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
+      <PeerProvider>
+        <App />
+      </PeerProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
