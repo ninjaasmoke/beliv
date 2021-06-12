@@ -10,7 +10,7 @@ const NewRoom: React.FC = () => {
         backgroundColor: 'var(--sec)',
         padding: '12px 24px',
         cursor: 'pointer',
-        width: 'fit-content',
+        width: '224px',
         margin: '0 auto',
         fontWeight: 700,
         color: 'var(--color)'
@@ -18,7 +18,7 @@ const NewRoom: React.FC = () => {
     return (
         <Link to={'/room/' + peer?.id}>
             <div className="newRoom" style={style}>
-                Create new room &nbsp;+
+                Go to your own room
             </div>
         </Link>
     )

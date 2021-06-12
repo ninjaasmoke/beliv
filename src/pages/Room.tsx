@@ -51,7 +51,10 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
     return (
         <div className="room">
             <div className="roomMain">
-                <h1>Main</h1>
+                {/* <video src=""></video> */}
+                <iframe width="100%"
+                    src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                </iframe>
             </div>
             <div className="roomSideBar">
                 <div className="copy">

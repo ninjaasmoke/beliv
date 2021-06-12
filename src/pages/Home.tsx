@@ -1,4 +1,5 @@
 import React from 'react'
+import JoinRoom from '../components/JoinRoom'
 import Nav from '../components/Nav'
 import NewRoom from '../components/NewRoom'
 
@@ -10,6 +11,7 @@ const Home: React.FC<Props> = () => {
             <Nav />
             <main className="container" >
                 <NewRoom />
+                <JoinRoom />
             </main>
         </div>
     )

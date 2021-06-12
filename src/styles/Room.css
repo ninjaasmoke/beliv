@@ -10,6 +10,11 @@
     width: calc(100vw - 300px);
     min-height: 100vh;
     border-right: 1px solid var(--sec);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
 }
 
 .roomSideBar {
@@ -19,6 +24,13 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+iframe {
+    outline: none;
+    border: none;
+    height: calc((100vw - 300px)/1.7);
+    margin: auto 0;
 }
 
 .copy {
@@ -174,15 +186,21 @@
 @media (max-width: 768px) {
     .room {
         flex-direction: column;
+        justify-content: space-between;
+        min-height: 100vh;
     }
     .roomMain {
         width: 100%;
         border: none;
-        min-height: 40vh;
+        min-height: 30%;
+        height: 40%;
+    }
+    iframe {
+        height: 400px;
     }
     .roomSideBar {
         width: 100%;
-        /* flex-direction: column-reverse; */
+        height: 60%;
     }
     .chatting {
         min-height: 24vh;
@@ -191,6 +209,6 @@
         display: none;
     }
     .messages {
-        max-height: 40vh;
+        max-height: 30vh;
     }
 }
