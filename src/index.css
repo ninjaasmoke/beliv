@@ -48,4 +48,9 @@ a {
   user-select: none;
 }
 
+hr {
+  border: 1px solid #5F718C66;
+  margin: 8px 0;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@700;900&family=Lexend:wght@400;700&display=swap');

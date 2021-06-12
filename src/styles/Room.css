@@ -24,7 +24,7 @@
     margin-bottom: 12px;
 }
 
-.copy span{
+.copy div span{
     user-select: text;
 }
 
@@ -37,8 +37,14 @@
     padding-left: 12px;
 }
 
-.copy button img {
+.optIcon {
     width: 18px;
     height: 18px;
     padding-top: 4px;
+}
+
+.copy > span {
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--secCol);
 }
