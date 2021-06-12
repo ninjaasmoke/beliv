@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useAuthContext } from '../context/AuthContext'
 
 const NewRoom: React.FC = () => {
+    const { userData } = useAuthContext();
+
     const style: React.CSSProperties = {
         borderRadius: 8,
         backgroundColor: 'var(--sec)',
@@ -13,7 +16,7 @@ const NewRoom: React.FC = () => {
         color: 'var(--color)'
     }
     return (
-        <Link to={'/room/roomID'}>
+        <Link to={'/room/' + userData.googleId}>
             <div className="newRoom" style={style}>
                 Create new room &nbsp;+
             </div>

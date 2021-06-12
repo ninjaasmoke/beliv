@@ -1,0 +1,44 @@
+.room {
+    width: 100%;
+    display: flex;
+    flex-direction:  row;
+    overflow-x: hidden;
+}
+
+.roomMain {
+    width: calc(100vw - 300px);
+}
+
+.roomSideBar {
+    width: 300px;
+    padding: 20px 4px;
+}
+
+.copy {
+    border-radius: 8px;
+    padding: 20px;
+    background-color: var(--sec);
+}
+
+.copy h5 {
+    margin-bottom: 12px;
+}
+
+.copy span{
+    user-select: text;
+}
+
+.copy button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    padding-left: 12px;
+}
+
+.copy button img {
+    width: 18px;
+    height: 18px;
+    padding-top: 4px;
+}
