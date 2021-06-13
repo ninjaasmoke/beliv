@@ -36,6 +36,7 @@ export default function PeerProvider({ children }: { children: any }) {
     }
     const close = () => {
         setPeerConnOpen(false);
+        setMessages([]);
         console.log("Closed peerConnection");
     }
     const open = () => {

@@ -32,31 +32,7 @@ const JoinRoom: React.FC = () => {
     }
 
     const connect = (roomID: string) => {
-        const conn = peer?.connect(roomID);
-        console.log(conn);
-        conn && setPeerConnection && setPeerConnection(conn);
-        const interval = setInterval(() => {
-            console.log(
-                "checking connetionState",
-                conn?.peerConnection?.connectionState
-            );
-            if (
-                conn?.peerConnection?.connectionState &&
-                conn?.peerConnection?.connectionState === "failed"
-            ) {
-                conn.close();
-                setPeerConnection && setPeerConnection(null);
-                connect(roomID);
-                clearInterval(interval);
-            } else if (
-                (conn?.peerConnection?.connectionState &&
-                    conn?.peerConnection?.connectionState === "connected") ||
-                !conn?.peerConnection?.connectionState
-            ) {
-                clearInterval(interval);
-                history.push(`/room/${roomID}`);
-            }
-        }, 2000);
+        history.push(`/room/${roomID}`);
     }
 
     return (
