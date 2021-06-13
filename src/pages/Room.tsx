@@ -2,14 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
 import { getCookie } from '../helper/cookies';
+import { usePeerContext } from '../context/PeerContext';
+import Message from '../components/Message';
+import CenterSpinner from '../components/CenterSpinner';
 import '../styles/Room.css';
 
 import copy from '../assets/images/copy.svg';
 import share from '../assets/images/share.svg';
 import send from '../assets/images/send_btn.png';
-import { usePeerContext } from '../context/PeerContext';
-import Message from '../components/Message';
-import CenterSpinner from '../components/CenterSpinner';
+import fs from '../assets/images/fullscreen.svg';
 
 interface RoomParams {
     roomID: string
@@ -100,7 +101,7 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
             if (e.ctrlKey && e.key === "Enter" && input.current?.value) {
                 sendChat();
             }
-            if (e.ctrlKey && e.key === "i") {
+            else if (e.ctrlKey && e.key === "i") {
                 toggleFullScreen();
             }
         })
@@ -117,6 +118,7 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
                             {/* <iframe width="100%"
                     src="https://www.youtube.com/embed/tgbNymZ7vqY">
                 </iframe> */}
+                            <img src={fs} className="fullScreenToggle" alt="Fullscreen Toggle" onClick={toggleFullScreen} />
                         </div>
                         <div className="roomSideBar">
                             <div className="copy">
