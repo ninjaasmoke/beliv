@@ -5,7 +5,7 @@ import { getCookie } from '../helper/cookies';
 interface Props {
     path: string,
     exact: boolean,
-    component: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>;
+    component: React.FC<any>;
 }
 
 const PrivateRoute: React.FC<Props> = ({ component, path, exact }) => {
