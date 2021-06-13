@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 import Peer from 'peerjs';
 import { createContext, useContext, useState, useEffect } from 'react';
+import { useAuthContext } from './AuthContext';
 import { PeerProp } from './types';
 
 const defaultPeerVal: PeerProp = {
@@ -17,6 +18,7 @@ const defaultPeerVal: PeerProp = {
 const PeerContext = createContext<PeerProp>(defaultPeerVal);
 
 export default function PeerProvider({ children }: { children: any }) {
+    const { userData } = useAuthContext();
     const [peer, setPeer] = useState<Peer | null>(null);
     const [peerConnOpen, setPeerConnOpen] = useState(false);
 

@@ -70,7 +70,7 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
             ) {
                 clearInterval(interval);
                 setConnecting(false);
-                const event = `${userData.name.split(' ')[0]} joined!`;
+                const event = `${userData.name.split(' ')[0]} connected!`;
                 const m = { text: event, sender: userData.name, senderID: userData.googleId, senderImg: userData.imageUrl, type: 'joinMessage' }
                 console.log(event);
                 conn?.send({ message: m, type: 'message' });
@@ -90,20 +90,21 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
         }
     }
 
-    useEffect(() => {
-        if (getCookie('email') === '') window.location.replace('/login')
-    }, [userData])
+    const keyListen = (e: KeyboardEvent) => {
+        if (e.ctrlKey && e.key === "Enter" && input.current?.value) {
+            sendChat();
+        }
+        else if (e.ctrlKey && e.key === "i") {
+            toggleFullScreen();
+        }
+    }
 
     useEffect(() => {
-        const keyListen = (e: KeyboardEvent) => {
-            if (e.ctrlKey && e.key === "Enter" && input.current?.value) {
-                sendChat();
-            }
-            else if (e.ctrlKey && e.key === "i") {
-                toggleFullScreen();
-            }
-        }
-        if (peer && roomID !== peer.id) connect(roomID); else setConnecting(false);
+        if (peer && roomID !== peer.id) { connect(roomID); }
+        else { setConnecting(false); }
+    }, [])
+
+    useEffect(() => {
         document.addEventListener('keydown', keyListen);
         return () => {
             document.removeEventListener('keydown', keyListen);
