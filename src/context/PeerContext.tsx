@@ -47,6 +47,7 @@ export default function PeerProvider({ children }: { children: any }) {
         const peer = new Peer(nanoid(6));
 
         const open = (id: string) => {
+            console.log("Peer ID: ", id);
             setPeer(peer);
         };
         const err = (err: any) => {
