@@ -26,6 +26,7 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
     const input = useRef<HTMLTextAreaElement>(null);
 
     const sendChat = () => {
+        console.log("send messages")
         const msg = input.current?.value;
         // .replace(/([\uE000-\uF8FF]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])/g, ''); // To replace emoji
         const m = { text: msg, sender: userData.name, senderID: userData.googleId, senderImg: userData.imageUrl }
@@ -69,6 +70,12 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
             ) {
                 clearInterval(interval);
                 setConnecting(false);
+                const event = `${userData.name.split(' ')[0]} joined!`;
+                const m = { text: event, sender: userData.name, senderID: userData.googleId, senderImg: userData.imageUrl, type: 'joinMessage' }
+                console.log(event);
+                conn?.send({ message: m, type: 'message' });
+                setMessages && setMessages((msgs: any) => [...msgs, { ...m, sent: true }]);
+
             }
         }, 2000);
     }
@@ -121,7 +128,8 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
                             <div className="chatting">
                                 <div className="messages" id="messages">
                                     {
-                                        messages.map((msg, msgIdx) => <Message msg={msg.text} sender={msg.sender} sent={msg.sent} key={msgIdx} />)
+                                        messages &&
+                                        messages.map((msg, msgIdx) => <Message msg={msg.text} sender={msg.sender} sent={msg.sent} key={msgIdx} type={msg.type ?? ""} />)
                                     }
                                     <div className="lastMsg" id="lastMsg" />
                                 </div>

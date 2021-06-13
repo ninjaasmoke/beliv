@@ -9,7 +9,9 @@ const defaultPeerVal: PeerProp = {
     peerConnOpen: false,
     setPeerConnection: null,
     messages: [],
-    setMessages: null
+    setMessages: null,
+    joiners: [],
+    setJoiners: null,
 }
 
 const PeerContext = createContext<PeerProp>(defaultPeerVal);
@@ -21,6 +23,7 @@ export default function PeerProvider({ children }: { children: any }) {
     const [peerConnection, setPeerConnection] = useState<Peer.DataConnection | null>(null);
 
     const [messages, setMessages] = useState<any[]>([]);
+    const [joiners, setJoiners] = useState<any[]>([]);
 
     const data = (data: any) => {
         console.log(data);
@@ -82,7 +85,9 @@ export default function PeerProvider({ children }: { children: any }) {
             peerConnection,
             setPeerConnection,
             messages,
-            setMessages
+            setMessages,
+            joiners,
+            setJoiners
         }} >
             {children}
         </PeerContext.Provider>

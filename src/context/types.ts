@@ -23,4 +23,6 @@ export type PeerProp = {
     setPeerConnection: React.Dispatch<React.SetStateAction<Peer.DataConnection | null>> | null,
     messages: any[];
     setMessages: React.Dispatch<React.SetStateAction<any[]>> | null;
+    joiners: any[];
+    setJoiners: React.Dispatch<React.SetStateAction<any[]>> | null;
 }

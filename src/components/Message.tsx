@@ -4,14 +4,20 @@ import './Message.css';
 interface MsgProps {
     msg: string,
     sender: string,
-    sent: boolean
+    sent: boolean,
+    type: string
 }
 
-const Message: React.FC<MsgProps> = ({ msg, sender, sent }) => {
+const Message: React.FC<MsgProps> = ({ msg, sender, sent, type }) => {
     return (
-        <div className={sent ? "message sent" : "message"}>
-            {!sent ? <span>{sender.split(' ')[0]}</span> : ""} {msg}
-        </div>
+        <>
+            {type
+                ? <div className="joinMessage">{sent ? "You joined!" : msg}</div>
+                : <div className={sent ? "message sent" : "message"}>
+                    {!sent ? <span>{sender.split(' ')[0]}</span> : ""} {msg}
+                </div>
+            }
+        </>
     )
 }
 

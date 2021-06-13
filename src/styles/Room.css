@@ -156,6 +156,14 @@ iframe {
     border: none;
 }
 
+.joinEvent {
+    width: 100%;
+    font-size: 12px;
+    color: var(--accent);
+    text-align: center;
+    opacity: 0.5;
+}
+
 .sndBtn {
     background-color: transparent;
     border: none;
