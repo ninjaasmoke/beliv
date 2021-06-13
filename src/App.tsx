@@ -23,7 +23,7 @@ function App() {
           <Route path="/terms" component={Terms} />
           <PrivateRoute path="/profile" exact component={Profile} />
           <PrivateRoute path="/settings" exact component={Settings} />
-          <Route path="/room/:roomID" exact component={Room} /> {/* Fix this */}
+          <PrivateRoute path="/room/:roomID" exact component={Room} /> {/* Fix this */}
           <PrivateRoute path="/" exact component={Home} />
         </Switch>
       </BrowserRouter>

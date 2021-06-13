@@ -9,16 +9,9 @@ interface Props {
 }
 
 const PrivateRoute: React.FC<Props> = ({ component, path, exact }) => {
-    return (
-        <Route
-            path={path}
-            exact={exact}
-        >
-            {
-                getCookie('name').length !== 0 ? component : <Redirect to="/login" />
-            }
-        </Route>
-    );
+    if (getCookie('name').length !== 0)
+        return <Route path={path} exact={exact} component={component} />
+    return <Redirect to="/login" />
 }
 
 export default PrivateRoute
