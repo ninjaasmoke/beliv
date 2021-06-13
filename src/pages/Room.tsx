@@ -90,7 +90,7 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
         <>
             {
                 connecting
-                    ? <CenterSpinner />
+                    ? <CenterSpinner msg="Connecting" />
                     : <div className="room">
                         <div className="roomMain">
                             {/* <video src=""></video> */}

@@ -1,10 +1,11 @@
 import React from 'react';
 import './CenterSpinner.css';
 
-const CenterSpinner: React.FC = () => {
+const CenterSpinner: React.FC<{ msg: string }> = ({ msg }) => {
     return (
         <div className="spinWrapper">
-            <div className="spinner"></div>
+            {msg}
+            <div className="centerSpinner"></div>
         </div>
     )
 }
