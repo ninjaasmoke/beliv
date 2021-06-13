@@ -16,21 +16,27 @@ interface RoomParams {
 const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
     const { roomID } = match.params;
     const { userData } = useAuthContext();
-    const { messages, setMessages, peerConnection } = usePeerContext();
+    const { messages, setMessages, peerConnection, peerConnOpen } = usePeerContext();
 
     const input = useRef<HTMLTextAreaElement>(null);
 
     const sendChat = () => {
         const msg = input.current?.value;
+        // .replace(/([\uE000-\uF8FF]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])/g, ''); // To replace emoji
         const m = { text: msg }
-        if (msg) {
-            peerConnection?.send({ message: m, type: 'message' });
+        if (msg && peerConnection && peerConnOpen) {
+            peerConnection.send({ message: m, type: 'message' });
             setMessages && setMessages((msgs: any) => [...msgs, { ...m, sent: true }]);
             input.current?.value && (input.current.value = "");
-            const lastTop = document.getElementById('lastMsg')?.offsetTop;
-            if (lastTop)
-                document.getElementById('messages')?.scrollTo(0, lastTop);
+            msgAcitvity();
         }
+    }
+
+    const msgAcitvity = () => {
+        const lastTop = document.getElementById('lastMsg')?.offsetTop;
+        if (lastTop)
+            document.getElementById('messages')?.scrollTo(0, lastTop);
+        document.getElementById('sendChat')?.focus();
     }
 
     useEffect(() => {

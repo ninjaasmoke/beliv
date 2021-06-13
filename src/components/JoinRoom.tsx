@@ -25,7 +25,7 @@ const JoinRoom: React.FC = () => {
     const [showBtn, setshowBtn] = useState(false);
 
     const listenLen = (val: string) => {
-        if (val.length === 6) {
+        if (val.length >= 6) {
             setshowBtn(true)
         }
         else setshowBtn(false);

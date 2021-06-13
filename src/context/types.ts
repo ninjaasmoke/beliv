@@ -19,6 +19,7 @@ export type UserData = {
 export type PeerProp = {
     peer: Peer | null;
     peerConnection: Peer.DataConnection | null;
+    peerConnOpen: boolean;
     setPeerConnection: React.Dispatch<React.SetStateAction<Peer.DataConnection | null>> | null,
     messages: any[];
     setMessages: React.Dispatch<React.SetStateAction<any[]>> | null;
