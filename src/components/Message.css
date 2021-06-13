@@ -1,0 +1,30 @@
+.message {
+    width: fit-content;
+    max-width: calc(100% - 12px);
+    font-size: 14px;
+    background-color: var(--terHov);
+    padding: 2px 12px 4px;
+    border-radius: 8px;
+    border-top-left-radius: 0;
+    margin-bottom: 8px;
+    word-wrap: break-word;
+    user-select: text;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.message > span {
+    padding-top: 4px;
+    font-weight: 900;
+    font-size: 10px;
+    color: var(--secCol);
+}
+
+.sent {
+    margin-left: auto;
+    border-radius: 20px;
+    border-top-right-radius: 0;
+    background-color: var(--accent);
+    padding-bottom: 2px;
+}

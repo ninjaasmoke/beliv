@@ -8,6 +8,7 @@ import copy from '../assets/images/copy.svg';
 import share from '../assets/images/share.svg';
 import send from '../assets/images/send_btn.png';
 import { usePeerContext } from '../context/PeerContext';
+import Message from '../components/Message';
 
 interface RoomParams {
     roomID: string
@@ -82,11 +83,7 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
                 <div className="chatting">
                     <div className="messages" id="messages">
                         {
-                            messages.map((msg, msgIdx) => (
-                                <div className={msg.sent ? "message sent" : "message"} key={msgIdx}>
-                                    {msg.senderID !== userData.googleId ? <span>{msg.sender.split(' ')[0]}</span> : ""} {msg.text}
-                                </div>
-                            ))
+                            messages.map((msg, msgIdx) => <Message msg={msg.text} sender={msg.sender} sent={msg.sent} key={msgIdx} />)
                         }
                         <div className="lastMsg" id="lastMsg" />
                     </div>
