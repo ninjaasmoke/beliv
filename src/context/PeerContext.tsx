@@ -26,6 +26,8 @@ export default function PeerProvider({ children }: { children: any }) {
         console.log(data);
         if (data.type === "message") {
             setMessages && setMessages((m: any) => [...m, data[data.type]]);
+        } else if (data.type === "meta") {
+
         }
     }
     const error = (err: any) => {
@@ -36,7 +38,10 @@ export default function PeerProvider({ children }: { children: any }) {
         setPeerConnOpen(false);
         console.log("Closed peerConnection");
     }
-    const open = () => { console.log("Opened peerConnection") }
+    const open = () => {
+        setPeerConnOpen(true);
+        console.log("Opened peerConnection")
+    }
     useEffect(() => {
         if (peerConnection) {
             peerConnection.on('data', data);

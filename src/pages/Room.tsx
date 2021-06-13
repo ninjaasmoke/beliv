@@ -23,7 +23,7 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
     const sendChat = () => {
         const msg = input.current?.value;
         // .replace(/([\uE000-\uF8FF]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])/g, ''); // To replace emoji
-        const m = { text: msg }
+        const m = { text: msg, sender: userData.name, senderID: userData.googleId, senderImg: userData.imageUrl }
         if (msg && peerConnection && peerConnOpen) {
             peerConnection.send({ message: m, type: 'message' });
             setMessages && setMessages((msgs: any) => [...msgs, { ...m, sent: true }]);
@@ -84,7 +84,7 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
                         {
                             messages.map((msg, msgIdx) => (
                                 <div className={msg.sent ? "message sent" : "message"} key={msgIdx}>
-                                    {msg.text}
+                                    {msg.senderID !== userData.googleId ? <span>{msg.sender.split(' ')[0]}</span> : ""} {msg.text}
                                 </div>
                             ))
                         }
