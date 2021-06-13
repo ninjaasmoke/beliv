@@ -11,7 +11,8 @@ const inpStyle: React.CSSProperties = {
     marginTop: 20,
     border: 'none',
     color: 'var(--color)',
-    outline: 'none'
+    outline: 'none',
+    textAlign: 'center'
 }
 
 const JoinRoom: React.FC = () => {
@@ -36,9 +37,9 @@ const JoinRoom: React.FC = () => {
         <div style={{ display: 'flex', flexDirection: 'column' }}>
             <input style={inpStyle}
                 ref={roomID} name="joinRoom" id="joinRoom"
-                autoCorrect="false"
-                autoComplete="false"
-                autoCapitalize="false"
+                autoCorrect="off"
+                autoComplete="off"
+                autoCapitalize="off"
                 placeholder="Enter friend's room ID"
                 onChange={(e) => { listenLen(e.target.value) }} />
             <div className="btnDis">
