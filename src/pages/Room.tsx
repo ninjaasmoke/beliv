@@ -27,7 +27,6 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
     const input = useRef<HTMLTextAreaElement>(null);
 
     const sendChat = () => {
-        console.log("send messages")
         const msg = input.current?.value;
         // .replace(/([\uE000-\uF8FF]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])/g, ''); // To replace emoji
         const m = { text: msg, sender: userData.name, senderID: userData.googleId, senderImg: userData.imageUrl }
@@ -96,15 +95,19 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
     }, [userData])
 
     useEffect(() => {
-        if (peer && roomID !== peer.id) connect(roomID); else setConnecting(false);
-        document.addEventListener('keydown', (e) => {
+        const keyListen = (e: KeyboardEvent) => {
             if (e.ctrlKey && e.key === "Enter" && input.current?.value) {
                 sendChat();
             }
             else if (e.ctrlKey && e.key === "i") {
                 toggleFullScreen();
             }
-        })
+        }
+        if (peer && roomID !== peer.id) connect(roomID); else setConnecting(false);
+        document.addEventListener('keydown', keyListen);
+        return () => {
+            document.removeEventListener('keydown', keyListen);
+        }
     }, [])
 
     return (
