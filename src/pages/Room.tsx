@@ -78,7 +78,7 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
     }, [userData])
 
     useEffect(() => {
-        connect(roomID);
+        if (peer && roomID !== peer.id) connect(roomID); else setConnecting(false);
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.key === "Enter" && input.current?.value) {
                 sendChat();
