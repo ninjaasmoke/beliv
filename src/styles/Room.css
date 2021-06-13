@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     flex-direction:  row;
+    height: 100vh;
     overflow-x: hidden;
     overflow-y: hidden;
 }
@@ -23,7 +24,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: space-evenly;
+    height: 100%;
 }
 
 iframe {
@@ -37,8 +39,8 @@ iframe {
     border-radius: 8px;
     padding: 20px;
     width: 100%;
+    height: 30%;
     background-color: var(--sec);
-    margin-bottom: 12px;
 }
 
 .copy h5 {
@@ -70,15 +72,16 @@ iframe {
     color: var(--secCol);
 }
 
+.roomHR {
+    border: 1px solid var(--sec);
+}
+
 .header {
     width: 100%;
     padding: 12px 0;
     height: 64px;
-    border-top: 1px solid var(--sec);
-    border-bottom: 1px solid var(--sec);
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
 }
 
 .headerImg {
@@ -186,6 +189,10 @@ iframe {
     }
     iframe {
         height: 400px;
+    }
+    .roomHR {
+        border: none;
+        margin: 2px;
     }
     .roomSideBar {
         width: 100%;

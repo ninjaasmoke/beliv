@@ -80,6 +80,16 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
         }, 2000);
     }
 
+    function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
+    }
+
     useEffect(() => {
         if (getCookie('email') === '') window.location.replace('/login')
     }, [userData])
@@ -89,6 +99,9 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.key === "Enter" && input.current?.value) {
                 sendChat();
+            }
+            if (e.ctrlKey && e.key === "i") {
+                toggleFullScreen();
             }
         })
     }, [])
@@ -121,10 +134,12 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
                                     text: roomID
                                 })}>Share roomID with your friends. <img className="optIcon" src={share} alt="Share" /> </span>
                             </div>
+                            <hr className="roomHR" />
                             <div className="header">
                                 <img className="headerImg" src={userData.imageUrl} alt="" />
                                 <div className="headerName">{userData.name}</div>
                             </div>
+                            <hr className="roomHR" />
                             <div className="chatting">
                                 <div className="messages" id="messages">
                                     {
