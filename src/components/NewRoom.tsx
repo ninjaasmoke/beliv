@@ -13,12 +13,13 @@ const NewRoom: React.FC = () => {
         width: '224px',
         margin: '0 auto',
         fontWeight: 700,
-        color: 'var(--color)'
+        color: 'var(--color)',
+        textAlign: 'center'
     }
     return (
         <Link to={'/room/' + peer?.id}>
             <div className="newRoom" style={style}>
-                Go to your own room
+                Enter your room
             </div>
         </Link>
     )
