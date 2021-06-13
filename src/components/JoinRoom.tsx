@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { usePeerContext } from '../context/PeerContext';
 import './JoinRoom.css'
 
 const inpStyle: React.CSSProperties = {
@@ -18,14 +17,12 @@ const inpStyle: React.CSSProperties = {
 const JoinRoom: React.FC = () => {
     const history = useHistory();
 
-    const { peer, setPeerConnection } = usePeerContext();
-
     const roomID = useRef<HTMLInputElement>(null);
 
     const [showBtn, setshowBtn] = useState(false);
 
     const listenLen = (val: string) => {
-        if (val.length >= 6) {
+        if (val.length === 6) {
             setshowBtn(true)
         }
         else setshowBtn(false);
