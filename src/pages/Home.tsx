@@ -15,7 +15,7 @@ const Home: React.FC<Props> = () => {
             <main className="container" >
                 {
                     !peer
-                        ? <CenterSpinner msg="Starting to beliv" />
+                        ? <CenterSpinner msg="Beginning to beliv" />
                         : <>
                             <NewRoom />
                             <JoinRoom />
