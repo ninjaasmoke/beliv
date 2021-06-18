@@ -25,8 +25,10 @@
     margin-left: auto;
     border-radius: 20px;
     border-top-right-radius: 0;
-    background-color: var(--accent);
+    /* background-color: var(--accent); */
     padding-bottom: 2px;
+    background: linear-gradient(180deg, var(--accent),#F5004E,#840091) no-repeat center;
+    background-attachment: fixed;
 }
 
 .joinMessage {
