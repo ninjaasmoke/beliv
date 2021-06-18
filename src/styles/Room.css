@@ -74,7 +74,13 @@ iframe {
     cursor: pointer;
     padding: 4px;
     padding-left: 12px;
+    transition-duration: 300ms;
 }
+
+.copy button:hover {
+    transform: scale(0.9);
+}
+
 
 .optIcon {
     width: 14px;

@@ -140,7 +140,7 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
                                     url: window.location.href,
                                     title: 'Join my beliv room',
                                     text: roomID
-                                })}>Share roomID with your friends. <img className="optIcon" src={share} alt="Share" /> </span>
+                                })}>Share roomID with your friend. <img className="optIcon" src={share} alt="Share" /> </span>
                             </div>
                             <hr className="roomHR" />
                             <div className="header">
