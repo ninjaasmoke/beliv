@@ -119,8 +119,8 @@ iframe {
     background-color: var(--sec);
     position: relative;
     padding: 12px;
-    padding-bottom: 60px;
-    max-height: 63vh;
+    /* padding-bottom: 60px; */
+    max-height: 60vh;
 }
 
 .chatTextArea {
@@ -176,7 +176,7 @@ iframe {
 
 #lastMsg {
     width: 100%;
-    height: 30px;
+    height: 40px;
 }
 
 .joinEvent {
@@ -235,9 +235,6 @@ iframe {
     } 
     .header {
         display: none;
-    }
-    .messages {
-        max-height: 30vh;
     }
     .sndBtn {
         padding-right: 12px;
