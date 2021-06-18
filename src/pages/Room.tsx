@@ -40,8 +40,10 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
 
     const msgAcitvity = () => {
         const lastTop = document.getElementById('lastMsg')?.offsetTop;
-        if (lastTop)
-            document.getElementById('messages')?.scrollTo(0, lastTop);
+        if (lastTop) {
+            // document.getElementById('messages')?.scrollTo(0, (lastTop + 40));
+            document.getElementById('lastMsg')?.scrollIntoView()
+        }
         document.getElementById('sendChat')?.focus();
     }
 
@@ -98,18 +100,18 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
             toggleFullScreen();
         }
     }
+    useEffect(() => {
+        document.addEventListener('keydown', keyListen);
+        return () => {
+            document.removeEventListener('keydown', keyListen);
+        }
+    }, [keyListen])
 
     useEffect(() => {
         if (peer && roomID !== peer.id) { connect(roomID); }
         else { setConnecting(false); }
     }, [])
 
-    useEffect(() => {
-        document.addEventListener('keydown', keyListen);
-        return () => {
-            document.removeEventListener('keydown', keyListen);
-        }
-    }, [])
 
     return (
         <>
@@ -152,7 +154,8 @@ const Room: React.FC<RouteComponentProps<RoomParams>> = ({ match }) => {
                                         messages &&
                                         messages.map((msg, msgIdx) => <Message msg={msg.text} sender={msg.sender} sent={msg.sent} key={msgIdx} type={msg.type ?? ""} />)
                                     }
-                                    <div className="lastMsg" id="lastMsg" />
+                                    <div className="lastMsg" />
+                                    <div id="lastMsg" />
                                 </div>
                                 <div className="chatTextArea">
                                     <textarea ref={input} name="sendChat" id="sendChat" rows={1} placeholder="Type a message..."></textarea>
