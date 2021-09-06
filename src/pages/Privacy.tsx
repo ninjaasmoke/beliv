@@ -175,7 +175,7 @@ const Privacy: React.FC = () => {
                     <p>By email: nithins674@gmail.com</p>
                 </li>
                 <li>
-                    <p>By visiting this page: <a href="ninjaasmoke.github.io" rel="noreferrer" target="_blank">ninjaasmoke.github.io</a></p>
+                    <p>By visiting this page: <a href="https://ninjaasmoke.github.io" rel="noreferrer" target="_blank">ninjaasmoke.github.io</a></p>
                 </li>
             </ul>
         </div>
